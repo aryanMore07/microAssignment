@@ -19,6 +19,10 @@ app.get("/health", (req, res) => {
     res.send("hello from the health api");
 })
 
+app.get("/", (req, res) => {
+    res.send("hello from More Aryan");
+})
+
 
 
 const port = process.env.PORT || 3000
