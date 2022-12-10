@@ -13,6 +13,14 @@ app.use(bodyParser.urlencoded({
 
 app.use(express.static("public"));
 
+//
+
+app.get("/health", (req, res) => {
+    res.send("hello from the health api");
+})
+
+
+
 const port = process.env.PORT || 3000
 const host = process.env.HOST || "localhost";
 
