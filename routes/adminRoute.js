@@ -1,5 +1,6 @@
 const {Router} = require("express");
 const Gallery = require("../models/galleryCategory");
+const error = "../middleware/error.js";
 const route = Router();
 const Category = require("../models/galleryCategory");
 const Image = require("../models/imagegallery");
@@ -22,7 +23,7 @@ route.post("/addcategory", (req, res) => {
         if(!err) {
             res.send("Succesfully added a new category");
         } else {
-            res.send(err);
+            res.send(error);
         }
     });
 });
@@ -41,7 +42,7 @@ route.post("/addimage", (req, res) => {
         if(!err) {
             res.send("Succesfully added the Image");
         } else {
-            res.send(err);
+            next(error);
         }
     });
 });
