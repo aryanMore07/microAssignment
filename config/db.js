@@ -1,8 +1,12 @@
 const mongoose = require("mongoose");
+const dotenv = require("dotenv");
+dotenv.config("./db.js");
 
 var MongoDB = process.env.MONGODB_URL;
 
-mongoose.connect(MongoDB , {useUnifiedTopology:true , useNewUrlParser:true})
+mongoose.set('strictQuery', true);
+
+mongoose.connect(MongoDB , {useUnifiedTopology:true , useNewUrlParser:true});
 
 mongoose.connect(MongoDB, (err)=>{
     if(!err){

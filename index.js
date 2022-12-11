@@ -2,6 +2,9 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const ejs = require("ejs");
 const mongoose = require("mongoose");
+const adminRoute = require("./routes/adminRoute");
+const dbs = require("./config/db");
+
 
 const app = express();
 
@@ -14,6 +17,8 @@ app.use(bodyParser.urlencoded({
 app.use(express.static("public"));
 
 //
+
+app.use("/api/admin", adminRoute);
 
 app.get("/health", (req, res) => {
     res.send("hello from the health api");
