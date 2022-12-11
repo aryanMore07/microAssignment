@@ -1,3 +1,4 @@
+const e = require("express");
 const {Router} = require("express");
 const Gallery = require("../models/galleryCategory");
 const error = "../middleware/error.js";
@@ -12,6 +13,7 @@ route.get("/", (req, res) => {
     res.send("Hello from admin Route");
 });
 
+
 route.post("/addcategory", (req, res) => {
     const newGallery = new Category({
         name: req.body.name,
@@ -23,7 +25,7 @@ route.post("/addcategory", (req, res) => {
         if(!err) {
             res.send("Succesfully added a new category");
         } else {
-            res.send(error);
+            next(err);
         }
     });
 });
@@ -42,7 +44,7 @@ route.post("/addimage", (req, res) => {
         if(!err) {
             res.send("Succesfully added the Image");
         } else {
-            next(error);
+            next(err);
         }
     });
 });
